@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>WeatherApp</title>
+        <link rel="stylesheet" href="./main.css">
+    </head>
+    <body>
+        <header>
+            <input type='text' autocomplete='off' class='search-box' id='search-box' placeholder='Search for a city...'/>
+        </header>
+        <div class='location'>
+            <span class='loc-date'>
+                <h1 id='location-h1'></h1>
+                <div>
+                    <p id='date-p'></p>
+                    <p id='time-p'></p>
+                </div>
+            </span>
+            <img id='icon'/>
+        </div>
+        <div class='temperature'>
+            <div class="degree-section">
+                <h2 class='temperature-degree' id='temperature-degree'></h2>
+                <span>C</span>
+            </div>
+            <div class='temperature-desc' id='temperature-desc'></div>
+
+        </div>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbX9uONLt1KVHoIYZeLKqAD8qYlAitjLM&libraries=places"></script>
+        <script src="app.js"></script>
+        <script>
+            function initialize() {
+                var options = {
+                    types: ['(cities)'],
+                    componentRestrictions: {
+                        country: "us"
+                    }
+                };
+
+                var input = document.getElementById('search-box');
+                var autocomplete = new google.maps.places.Autocomplete(input, options);
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </body>
+</html>
